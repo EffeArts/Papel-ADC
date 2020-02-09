@@ -13,8 +13,12 @@ body {
    height: 100%;
    margin: 0px;
    padding: 0px;
-   /* background: #f6f6f6; */
    font-family: 'Montserrat', sans-serif;
+}
+
+body.staff {
+
+   background-color: #444;
 }
 
 header {
