@@ -424,6 +424,10 @@ header ul li span.user-name {
    text-decoration: none;
 }
 
+.pull-right {
+   left: 0;
+}
+
 /* cards */
 .cards-section .card {
    background-color: #ccc;
