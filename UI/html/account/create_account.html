@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale = 1.0">
+   <!-- font awesome -->
+   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.2/css/all.css">
+
+   <!-- Google Fonts -->
+   <link href="https://fonts.googleapis.com/css?family=Montserrat|Roboto&display=swap" rel="stylesheet">
+
+   <!-- Custom Styling -->
+   <link rel="stylesheet" type="text/css" href="../../css/styles.css">
+   <title>New Account | Papel</title>
+</head>
+
+<body>
+   <!-- Header -->
+   <header>
+      <div class="logo">
+         <h1 class="logo-text">
+            Papel
+         </h1>
+      </div>
+      <i class="fa fa-bars menu-toggle" onclick="menuToggler()"></i>
+      <ul class="nav" id="nav">
+
+         <li>
+            <a href="#">
+               <i class="fa fa-user"></i>
+               <span class="user-name">ANGE KAGAME</span>
+               <i class="fa fa-chevron-down"></i>
+            </a>
+            <ul id="dropdown-nav">
+               <li><a href="../index.html" class="logout">Logout</a></li>
+            </ul>
+         </li>
+      </ul>
+   </header>
+
+   <!-- Page wrapper -->
+   <div class="page-wrapper">
+      <div class="container-account">
+         <div class="account-title">
+            <h1>Papel Account</h1>
+         </div>
+      </div>
+      <hr>
+      <div class="create-account">
+         <form action="./home.html" method="post">
+            <h2 class="form-title">Create a New Bank Account</h2>
+
+            <div>
+               <label for="username">Type</label>
+               <select name="type" class="text-input">
+                  <option selected disabled>Select Type</option>
+                  <option value="1">Savings</option>
+                  <option value="2">Current</option>
+               </select>
+            </div>
+
+            <div>
+               <label for="password">Password</label>
+               <input type="password" name="password" class="text-input">
+            </div>
+
+            <div>
+               <button type="submit" name="submit-button" class="btn btn-big btn-block">Create</button>
+            </div>
+
+            <p><a href="./home.html">Cancel.</a></p>
+
+         </form>
+
+      </div>
+   </div>
+   <!-- footer -->
+   <div class="footer">
+      <div class="footer-content">
+
+      </div>
+
+      <div class="footer-bottom">
+         <p>&copy; Papel 2020 | Made by Ishimwe Ayman</p>
+      </div>
+   </div>
+
+   <script type="text/javascript" src="../../js/scripts.js"></script>
+</body>
+
+</html>
