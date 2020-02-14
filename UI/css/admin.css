@@ -1,0 +1,100 @@
+/* user's Dashboard */
+
+
+.dashboard-wrapper {
+   min-height: 85%;
+   display: flex;
+   height: calc(100% - 63px);
+}
+
+.dashboard-wrapper .left-sidebar {
+   flex: 2;
+   height: 100%;
+   background-color: #303738;
+}
+
+.dashboard-wrapper .left-sidebar li.active {
+   background-color: #1a2020;
+}
+
+.dashboard-wrapper .left-sidebar.user {
+   flex: 2;
+   height: 100%;
+   background-color: #DADCDE;
+}
+
+.dashboard-wrapper .left-sidebar ul {
+   list-style: none;
+   margin: 0px;
+   padding: 0px;
+   color: white;
+}
+
+.dashboard-wrapper .left-sidebar ul li a {
+   padding: 18px;
+   display: block;
+   border-bottom: 1px solid #2b3233;
+   text-decoration: none;
+   color: white;
+}
+
+.dashboard-wrapper .left-sidebar ul li a:hover {
+   background: #2b3233;
+}
+
+.dashboard-wrapper .dashboard-content {
+   /* flex: 8;
+   height: 100%;
+   padding: 20px; */
+   /* overflow-y: scroll; */
+   display: grid;
+   align-content: center;
+   padding-left: 90px;
+   padding-right: 90px;
+   padding-top: 150px;
+   grid-template-columns: auto auto auto;
+   text-align: center;
+}
+
+.dashboard-wrapper .admin-dashboard-content {
+   flex: 8;
+   height: 100%;
+   padding: 20px;
+   /* overflow-y: scroll; */
+   display: grid;
+   /* align-content: center; */
+   padding-left: 90px;
+   padding-right: 90px;
+   text-align: center;
+}
+
+
+.dashboard-content .page-title {
+   /*text-align: center;*/
+   margin-bottom: 1.5rem;
+   margin-top: 1.5rem;
+   font-weight: 800;
+}
+
+.dashboard-content .button-group a {
+   text-decoration: none;
+}
+
+/* Admins Section */
+
+.stats-container {
+   display: grid;
+   grid-gap: 15px;
+   grid-template-columns: repeat(auto-fit, minmax(30%, 1fr));
+
+}
+
+.stats-container .stat-box {
+   max-height: 150px;
+   color: white;
+   text-align: center
+}
+
+.stats-container .stat-box p {
+   font-size: 14px;
+}
