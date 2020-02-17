@@ -23,6 +23,19 @@ const getAccounts = (request, response) => {
    });
 };
 
+const getTransactions = (request, response) => {
+   pool.query("SELECT * FROM transactions ORDER BY id ASC", (error, results) => {
+      if (error) {
+         throw error;
+      }
+      const reply = {
+         status: 200,
+         data: results.rows
+      };
+      response.send(reply);
+   });
+};
+
 const getTransactionsByAcc = (request, response) => {
    const acc_num = parseInt(request.params.acc_num);
 
@@ -42,7 +55,28 @@ const getTransactionsByAcc = (request, response) => {
    );
 };
 
+const getTransactionById = (request, response) => {
+   const id = parseInt(request.params.id);
+
+   pool.query(
+      "SELECT * FROM transactions WHERE id = $1",
+      [id],
+      (error, results) => {
+         if (error) {
+            throw error;
+         }
+         const reply = {
+            status: 200,
+            data: results.rows
+         };
+         response.send(reply);
+      }
+   );
+};
+
 module.exports = {
    getAccounts,
-   getTransactionsByAcc
+   getTransactionsByAcc,
+   getTransactions,
+   getTransactionById
 };

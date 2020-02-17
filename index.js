@@ -23,6 +23,8 @@ app.get('/', (request, response) => {
 
 app.get('/accounts', db.getAccounts);
 app.get('/accounts/:acc_num/transactions', db.getTransactionsByAcc);
+app.get('/transactions', db.getTransactions);
+app.get('/transactions/:id', db.getTransactionById);
 
 app.listen(port, () => {
    console.log(`App running on port ${port}.`);
