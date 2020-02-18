@@ -10,6 +10,38 @@ const pool = new Pool({
    port: 5433
 });
 
+const getUsers = (request, response) => {
+   pool.query("SELECT * FROM users ORDER BY id ASC", (error, results) => {
+      if (error) {
+         throw error;
+      }
+      const reply = {
+         status: 200,
+         data: results.rows
+      };
+      response.send(reply);
+   });
+};
+
+const getUserAccounts = (request, response) => {
+   const email = request.params.email;
+
+   pool.query(
+      "SELECT accounts.createdOn, accounts.accnumber, accounts.type, accounts.status, accounts.balance  FROM accounts INNER JOIN users ON accounts.owner = users.id  WHERE users.email = $1",
+      [email],
+      (error, results) => {
+         if (error) {
+            throw error;
+         }
+         const reply = {
+            status: 200,
+            data: results.rows
+         };
+         response.send(reply);
+      }
+   );
+};
+
 const getAccounts = (request, response) => {
    pool.query("SELECT * FROM accounts ORDER BY id ASC", (error, results) => {
       if (error) {
@@ -98,5 +130,7 @@ module.exports = {
    getTransactionsByAcc,
    getTransactions,
    getTransactionById,
-   getAccountByNumber
+   getAccountByNumber,
+   getUsers,
+   getUserAccounts
 };
