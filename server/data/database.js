@@ -43,16 +43,38 @@ const getUserAccounts = (request, response) => {
 };
 
 const getAccounts = (request, response) => {
-   pool.query("SELECT * FROM accounts ORDER BY id ASC", (error, results) => {
-      if (error) {
-         throw error;
-      }
-      const reply = {
-         status: 200,
-         data: results.rows
-      };
-      response.send(reply);
-   });
+
+   if (Object.keys(request.query).length === 0) {
+      pool.query("SELECT * FROM accounts ORDER BY id ASC", (error, results) => {
+         if (error) {
+            throw error;
+         }
+         const reply = {
+            status: 200,
+            data: results.rows
+         };
+         response.send(reply);
+      });
+   } else {
+
+      const status = request.query.status;
+      pool.query(
+         "SELECT * FROM accounts WHERE status = $1",
+         [status],
+         (error, results) => {
+            if (error) {
+               throw error;
+            }
+            const reply = {
+               status: 200,
+               data: results.rows
+            };
+            response.send(reply);
+         }
+      );
+
+   }
+
 };
 
 const getTransactions = (request, response) => {
@@ -86,6 +108,7 @@ const getAccountByNumber = (request, response) => {
       }
    );
 };
+
 
 const getTransactionsByAcc = (request, response) => {
    const acc_num = parseInt(request.params.acc_num);
