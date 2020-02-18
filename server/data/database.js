@@ -36,6 +36,25 @@ const getTransactions = (request, response) => {
    });
 };
 
+const getAccountByNumber = (request, response) => {
+   const acc_num = parseInt(request.params.acc_num);
+
+   pool.query(
+      "SELECT * FROM accounts WHERE accnumber = $1",
+      [acc_num],
+      (error, results) => {
+         if (error) {
+            throw error;
+         }
+         const reply = {
+            status: 200,
+            data: results.rows
+         };
+         response.send(reply);
+      }
+   );
+};
+
 const getTransactionsByAcc = (request, response) => {
    const acc_num = parseInt(request.params.acc_num);
 
@@ -78,5 +97,6 @@ module.exports = {
    getAccounts,
    getTransactionsByAcc,
    getTransactions,
-   getTransactionById
+   getTransactionById,
+   getAccountByNumber
 };
