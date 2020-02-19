@@ -36,6 +36,8 @@ app.post("/auth/signin", db.login);
 
 app.post("/accounts", db.createAccount);
 
+app.delete("/accounts/:accnumber", db.deleteAccount);
+
 app.listen(port, () => {
   console.log(`App running on port ${port}.`);
 });

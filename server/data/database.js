@@ -190,31 +190,39 @@ const login = (request, response) => {
 };
 
 const createAccount = (request, response) => {
-   const {
-      accnumber,
-      createdon,
-      owner,
-      type,
-      status,
-      balance
-    } = request.body;
-  
-    //   response.send(request.body);
-  
-    pool.query(
-      "INSERT INTO accounts (accnumber, createdon, owner, type, status, balance) VALUES ($1, $2, $3, $4, $5, $6)",
-      [accnumber, createdon, owner, type, status, balance],
-      (error, result) => {
-        if (error) {
-          throw error;
-        }
-        // const reply = {
-        //   status: 201,
-        //   data: results.rows
-        // };
-        response.status(201).send(result.insertId);
+  const { accnumber, createdon, owner, type, status, balance } = request.body;
+
+  //   response.send(request.body);
+
+  pool.query(
+    "INSERT INTO accounts (accnumber, createdon, owner, type, status, balance) VALUES ($1, $2, $3, $4, $5, $6)",
+    [accnumber, createdon, owner, type, status, balance],
+    (error, result) => {
+      if (error) {
+        throw error;
       }
-    ); 
+      // const reply = {
+      //   status: 201,
+      //   data: results.rows
+      // };
+      response.status(201).send(result.insertId);
+    }
+  );
+};
+
+const deleteAccount = (request, response) => {
+  const accnumber = parseInt(request.params.accnumber);
+
+  pool.query("DELETE FROM accounts WHERE accnumber = $1", [accnumber], (error, results) => {
+    if (error) {
+      throw error;
+    }
+    const reply = {
+      status: 200,
+      message: 'Account successfully deleted'
+    };
+    response.status(200).send(reply);
+  });
 };
 
 module.exports = {
@@ -227,5 +235,6 @@ module.exports = {
   getUserAccounts,
   signup,
   login,
-  createAccount
+  createAccount,
+  deleteAccount
 };
