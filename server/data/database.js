@@ -170,6 +170,25 @@ const signup = (request, response) => {
   );
 };
 
+const login = (request, response) => {
+  const { username, password } = request.body;
+
+  pool.query(
+    "SELECT * FROM users WHERE username = $1 AND password = $2",
+    [username, password],
+    (error, results) => {
+      if (error) {
+        throw error;
+      }
+      const reply = {
+        status: 200,
+        data: results.rows
+      };
+      response.send(reply);
+    }
+  );
+};
+
 module.exports = {
   getAccounts,
   getTransactionsByAcc,
@@ -178,5 +197,6 @@ module.exports = {
   getAccountByNumber,
   getUsers,
   getUserAccounts,
-  signup
+  signup,
+  login
 };
