@@ -34,6 +34,8 @@ app.get("/users/:email/accounts", db.getUserAccounts);
 app.post("/auth/signup", db.signup);
 app.post("/auth/signin", db.login);
 
+app.post("/accounts", db.createAccount);
+
 app.listen(port, () => {
   console.log(`App running on port ${port}.`);
 });

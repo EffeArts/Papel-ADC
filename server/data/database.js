@@ -189,6 +189,34 @@ const login = (request, response) => {
   );
 };
 
+const createAccount = (request, response) => {
+   const {
+      accnumber,
+      createdon,
+      owner,
+      type,
+      status,
+      balance
+    } = request.body;
+  
+    //   response.send(request.body);
+  
+    pool.query(
+      "INSERT INTO accounts (accnumber, createdon, owner, type, status, balance) VALUES ($1, $2, $3, $4, $5, $6)",
+      [accnumber, createdon, owner, type, status, balance],
+      (error, result) => {
+        if (error) {
+          throw error;
+        }
+        // const reply = {
+        //   status: 201,
+        //   data: results.rows
+        // };
+        response.status(201).send(result.insertId);
+      }
+    ); 
+};
+
 module.exports = {
   getAccounts,
   getTransactionsByAcc,
@@ -198,5 +226,6 @@ module.exports = {
   getUsers,
   getUserAccounts,
   signup,
-  login
+  login,
+  createAccount
 };
