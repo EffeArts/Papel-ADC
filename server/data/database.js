@@ -213,16 +213,43 @@ const createAccount = (request, response) => {
 const deleteAccount = (request, response) => {
   const accnumber = parseInt(request.params.accnumber);
 
-  pool.query("DELETE FROM accounts WHERE accnumber = $1", [accnumber], (error, results) => {
-    if (error) {
-      throw error;
+  pool.query(
+    "DELETE FROM accounts WHERE accnumber = $1",
+    [accnumber],
+    (error, results) => {
+      if (error) {
+        throw error;
+      }
+      const reply = {
+        status: 200,
+        message: "Account successfully deleted"
+      };
+      response.status(200).send(reply);
     }
-    const reply = {
-      status: 200,
-      message: 'Account successfully deleted'
-    };
-    response.status(200).send(reply);
-  });
+  );
+};
+
+const UpdateAccStatus = (request, response) => {
+  const accnumber = parseInt(request.params.accnumber);
+  const { accstatus } = request.body;
+
+  pool.query(
+    "UPDATE accounts SET status = $1 WHERE accnumber = $2",
+    [accstatus, accnumber],
+    (error, results) => {
+      if (error) {
+        throw error;
+      }
+      const reply = {
+        status: 200,
+        data: {
+          accountnumber: accnumber,
+          status: accstatus
+        }
+      };
+      response.status(200).send(reply);
+    }
+  );
 };
 
 module.exports = {
@@ -236,5 +263,6 @@ module.exports = {
   signup,
   login,
   createAccount,
-  deleteAccount
+  deleteAccount,
+  UpdateAccStatus
 };

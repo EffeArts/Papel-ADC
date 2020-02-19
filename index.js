@@ -38,6 +38,8 @@ app.post("/accounts", db.createAccount);
 
 app.delete("/accounts/:accnumber", db.deleteAccount);
 
+app.patch("/accounts/:accnumber", db.UpdateAccStatus);
+
 app.listen(port, () => {
   console.log(`App running on port ${port}.`);
 });
