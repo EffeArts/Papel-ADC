@@ -2,9 +2,7 @@ const server = require("../index");
 const chai = require("chai");
 const chaiHttp = require("chai-http");
 
-const {
-  expect
-} = chai;
+const { expect } = chai;
 chai.use(chaiHttp);
 describe("/GET all accounts", () => {
   it("it should get all the accounts", done => {
@@ -59,10 +57,10 @@ describe("/POST Signin ", () => {
     chai
       .request("http://localhost:3000")
       .post("/auth/signin")
-      .set('content-type', 'application/x-www-form-urlencoded')
+      .set("content-type", "application/x-www-form-urlencoded")
       .send({
-        username: 'cena',
-        password: '123456'
+        username: "cena",
+        password: "123456"
       })
       .end((err, res) => {
         expect(res).to.have.status(200);
@@ -76,7 +74,7 @@ describe("/POST SignUp ", () => {
     chai
       .request("http://localhost:3000")
       .post("/auth/signup")
-      .set('content-type', 'application/x-www-form-urlencoded')
+      .set("content-type", "application/x-www-form-urlencoded")
       .send({
         fname: "Test",
         lname: "User",
