@@ -84,10 +84,10 @@ describe("/POST SignUp ", () => {
         username: "userTest",
         password: "123456",
         isadmin: "false",
-        role ": 3
+        role: 3
       })
       .end((err, res) => {
-        expect(res).to.have.status(200);
+        expect(res).to.have.status(201);
         done();
       });
   });
