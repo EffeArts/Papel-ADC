@@ -1,0 +1,32 @@
+{
+  "name": "Papel",
+  "version": "1.0.0",
+  "description": "Papel is a light-weight core banking application that powers banking operations like account creation, customer deposits, and withdrawals. This app is meant to support a single bank, where users can signup and create bank accounts online, but must visit the branch to withdraw or deposit money.",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --timeout 10000"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EffeArts/Papel-ADC.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EffeArts/Papel-ADC/issues"
+  },
+  "homepage": "https://github.com/EffeArts/Papel-ADC#readme",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "eslint": "6.8.0",
+    "eslint-config-airbnb-base": "14.0.0",
+    "eslint-plugin-import": "2.20.1",
+    "mocha": "^7.0.1"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "pg": "^7.18.1"
+  }
+}
